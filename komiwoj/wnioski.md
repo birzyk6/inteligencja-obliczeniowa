@@ -91,7 +91,7 @@ W ramach projektu zaimplementowano algorytm genetyczny rozwiązujący problem ko
 
 ## Zbieżność algorytmu
 
-![Historia długości trasy (bez optymalizacji)](results\convergence_comparison.png)
+![Historia długości trasy (bez optymalizacji)](results/convergence_comparison.png)
 
 **Wnioski:**
 
