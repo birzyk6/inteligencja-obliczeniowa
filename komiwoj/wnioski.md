@@ -126,7 +126,7 @@ W ramach projektu zaimplementowano algorytm genetyczny rozwiązujący problem ko
 
 ## Animacja
 
-![Animacja Najlepsza trasa (bez optymalizacji)](results\evolution_without_opt.gif)
+![Animacja Najlepsza trasa (bez optymalizacji)](results/evolution_without_opt.gif)
 ![Animacja Najlepsza trasa (z optymalizacją)](results/evolution_with_opt.gif)
 
 ## Rozkłady długości tras według parametrów
