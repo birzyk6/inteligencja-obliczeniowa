@@ -1,0 +1,2 @@
+best_distance,best_fitness,mean_fitness,time,std_distance,crossover_type,elite_size,mutation_rate,mutation_type,population_size,selection_type,tournament_size
+810.4135242664412,0.0012341898212774019,0.001213150748947507,15.265686392784119,11.577318619497078,PMX,2,0.15,inversion,250,tournament,5

@@ -1,0 +1,86 @@
+PORÓWNANIE WPŁYWU PARAMETRÓW NA DŁUGOŚĆ TRASY
+=============================================
+
+
+Parameter: population_size
+-------------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+250             2026.08          650.01          810.41          20.0    
+100             2057.47          608.70          953.27          17.0    
+200             2159.01          733.66          962.77          25.0    
+50              2288.54          573.69          1227.34          23.0    
+30              2354.16          428.87          1818.68          19.0    
+150             2593.98          721.67          1336.33          16.0    
+
+
+Parameter: elite_size
+--------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+20              2107.42          540.90          953.27          30.0    
+15              2116.95          606.15          1048.95          22.0    
+10              2263.81          825.82          962.77          18.0    
+2               2285.13          706.89          810.41          20.0    
+25              2402.86          481.24          1523.12          14.0    
+5               2403.51          691.88          940.72          16.0    
+
+
+Parameter: mutation_rate
+-----------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+0.03            2013.58          618.13          1048.95          15.0    
+0.005           2112.26          523.65          962.77          14.0    
+0.1             2138.72          660.50          953.27          20.0    
+0.05            2234.79          559.76          1318.50          13.0    
+0.01            2305.85          507.21          1189.92          18.0    
+0.15            2337.43          848.31          810.41          22.0    
+0.08            2434.00          621.87          1322.74          18.0    
+
+
+Parameter: tournament_size
+-------------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+5               1905.45          672.49          810.41          15.0    
+15              2100.20          501.71          1098.42          15.0    
+7               2197.61          634.94          953.27          21.0    
+2               2279.19          689.15          1301.06          18.0    
+10              2353.93          669.84          940.72          25.0    
+3               2393.64          614.95          1227.34          26.0    
+
+
+Parameter: crossover_type
+------------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+PMX             2163.46          782.64          810.41          39.0    
+OX              2262.02          699.26          953.27          39.0    
+CX              2279.75          413.78          1301.06          42.0    
+
+
+Parameter: mutation_type
+-----------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+inversion       1770.27          574.97          810.41          29.0    
+insert          1967.53          512.83          940.72          34.0    
+scramble        2399.22          310.15          1867.53          31.0    
+swap            2912.81          524.99          1652.36          26.0    
+
+
+Parameter: selection_type
+------------------------
+Value           Mean Distance   Std Dev         Min Distance    Count   
+tournament      1933.26          638.99          810.41          38.0    
+rank            2190.74          605.69          1098.42          44.0    
+roulette        2591.75          517.89          1523.12          38.0    
+
+
+NAJLEPSZA KONFIGURACJA PARAMETRÓW
+===============================
+
+population_size: 250
+elite_size: 2
+mutation_rate: 0.15
+tournament_size: 5
+crossover_type: PMX
+mutation_type: inversion
+selection_type: tournament
+
+Najlepsza długość trasy: 810.41

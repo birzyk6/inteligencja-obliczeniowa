@@ -1,0 +1,5 @@
+metric,without_optimization,with_optimization,improvement_percent
+best_distance,1428.36,765.95,46.38
+best_fitness,0.0007001027,0.0013055673,86.48
+mean_fitness,0.0003646241,0.0012694482,248.15
+execution_time,25.32,73.53,-190.38

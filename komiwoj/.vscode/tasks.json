@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Uruchom TSP",
+            "type": "shell",
+            "command": "python src/main.py",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Uruchom TSP (100 miast)",
+            "type": "shell",
+            "command": "python src/main.py --num-cities 80 --generations 1500 --opt-configs 120",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Uruchom TSP (szybkie testowanie)",
+            "type": "shell",
+            "command": "python src/main.py --generations 100 --opt-configs 5",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Uruchom TSP (bez animacji)",
+            "type": "shell",
+            "command": "python src/main.py --skip-animation",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Zainstaluj zależności",
+            "type": "shell",
+            "command": "pip install -r requirements.txt",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

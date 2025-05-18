@@ -1,0 +1,22 @@
+Porównanie parametrów algorytmu genetycznego
+===========================================
+
+Parametry bez optymalizacji:
+  population_size: 100
+  elite_size: 20
+  mutation_rate: 0.25
+  generations: 1500
+  tournament_size: 5
+  crossover_type: OX
+  mutation_type: swap
+  selection_type: tournament
+
+Parametry z optymalizacją:
+  population_size: 250
+  elite_size: 2
+  mutation_rate: 0.25
+  generations: 1500
+  tournament_size: 5
+  crossover_type: PMX
+  mutation_type: inversion
+  selection_type: tournament
