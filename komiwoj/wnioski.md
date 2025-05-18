@@ -63,7 +63,7 @@ W ramach projektu zaimplementowano algorytm genetyczny rozwiązujący problem ko
 **Wnioski:**
 
 -   **Krzyżowanie**: OX (Order Crossover) i CX (Cycle Crossover) dają najlepsze wyniki dla TSP, zachowując strukturę trasy
--   **Mutacja**: Metoda inwersji i metoda scramble (przemieszania) są najbardziej efektywne dla TSP, umożliwiając znaczące, ale kontrolowane zmiany w trasie
+-   **Mutacja**: Metoda inwersji i metoda insert (przemieszania) są najbardziej efektywne dla TSP, umożliwiając znaczące, ale kontrolowane zmiany w trasie
 -   **Selekcja**: Selekcja turniejowa zapewnia dobrą równowagę między różnorodnością populacji a presją selekcyjną, dając najlepsze rezultaty
 
 ## Analiza adaptacyjnego współczynnika mutacji
@@ -135,11 +135,11 @@ W ramach projektu zaimplementowano algorytm genetyczny rozwiązujący problem ko
 
 **Wnioski:**
 
--   Wykresy pudełkowe ujawniają znaczący wpływ wielkości populacji na stabilność wyników - większe populacje (200-250) wykazują mniejszą wariancję
+-   Wykresy pudełkowe ujawniają znaczący wpływ wielkości populacji na stabilność wyników - większe populacje (200-250) wykazują większą wariancję
 -   Funkcja selekcji turniejowej daje konsekwentnie najkrótsze trasy i najmniejszy rozrzut wyników w porównaniu z metodami rank i roulette
 -   Typ mutacji inversion zapewnia najlepsze wyniki z najmniejszym rozrzutem, co potwierdza jego efektywność dla problemu TSP
 -   Zaobserwowano wyraźne różnice w rozkładach długości tras między różnymi wartościami współczynnika mutacji, z najlepszymi wynikami dla 0.1 i 0.15
--   Typ krzyżowania PMX zapewnia bardziej przewidywalne wyniki niż OX czy CX, co jest widoczne w węższym zakresie międzykwartylowym
+-   Typ krzyżowania CX zapewnia bardziej przewidywalne wyniki niż OX czy PMX, co jest widoczne w węższym zakresie międzykwartylowym
 
 ## Wpływ parametrów na średnią długość trasy
 
@@ -161,9 +161,6 @@ W ramach projektu zaimplementowano algorytm genetyczny rozwiązujący problem ko
 
 -   Mapa cieplna uwidacznia silną interakcję między wielkością populacji a współczynnikiem mutacji
 -   Optymalne kombinacje to populacja 100 z współczynnikiem mutacji 0.1 oraz populacja 250 z współczynnikiem 0.03
--   Dla mniejszych populacji (30-50) korzystniejsze są niższe współczynniki mutacji (0.005-0.01)
--   Populacja o wielkości 150 wykazuje najmniejszą zależność od współczynnika mutacji, co czyni ją bezpiecznym wyborem przy niepewności co do innych parametrów
--   Duże populacje (200-250) z wysokim współczynnikiem mutacji (0.15) dają gorsze wyniki niż z umiarkowanymi współczynnikami, co pokazuje, że nadmiar eksploracji przestrzeni rozwiązań może być szkodliwy
 
 ## Najlepsza konfiguracja parametrów
 
@@ -183,7 +180,7 @@ W ramach projektu zaimplementowano algorytm genetyczny rozwiązujący problem ko
 **Wnioski:**
 
 -   Wśród najlepszych konfiguracji dominują te z dużą wielkością populacji (200-250) i metodą selekcji turniejowej
--   Typ krzyżowania PMX występuje częściej w czołowych konfiguracjach niż OX czy CX
+-   Typ krzyżowania PMX występuje częściej w czołowych konfiguracjach niż CX ale porównywalnie z OX
 -   Wszystkie 10 najlepszych konfiguracji wykorzystuje funkcję mutacji inversion, co potwierdza jej przewagę dla problemu TSP
 -   Rozmiar turnieju w zakresie 5-10 wydaje się optymalny dla populacji o wielkościach 200-250
 -   Zaobserwowano pewną elastyczność w doborze współczynnika mutacji (0.005-0.15) wśród najlepszych konfiguracji, sugerując, że inne parametry mogą kompensować różne wartości współczynnika mutacji
