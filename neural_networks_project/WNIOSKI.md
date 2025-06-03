@@ -121,7 +121,7 @@ _Rysunek 8: Końcowe prawdopodobieństwa dla wszystkich 10 klas._
 
 **Kompletne nagranie funkcjonalności aplikacji:**
 
-https://www.youtube.com/watch?v=ucLcYAWXpMU&ab_channel=BartoszIrzyk
+[https://www.youtube.com/watch?v=ucLcYAWXpMU&ab_channel=BartoszIrzyk](https://github.com/user-attachments/assets/29ab24e1-caec-4767-8c62-52e19633a9b4)
 
 _Wideo pokazuje pełny proces: rysowanie cyfry na płótnie, predykcję w czasie rzeczywistym, wizualizację aktywacji warstw sieci neuronowej oraz interfejs z ciemnym motywem._
 
