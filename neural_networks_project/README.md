@@ -23,9 +23,7 @@ _An interactive full-stack application that demonstrates how Convolutional Neura
 
 **Watch the Neural Network in Action**
 
-<video controls>
-  <source src="https://www.youtube.com/watch?v=ucLcYAWXpMU" type="video/mp4">
-</video>
+https://www.youtube.com/watch?v=ucLcYAWXpMU&ab_channel=BartoszIrzyk
 
 _Complete application walkthrough showing real-time digit recognition, neural network visualization, and interactive features_
 
