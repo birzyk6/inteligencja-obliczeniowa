@@ -1,0 +1,16 @@
+Investment Risk Assessment Examples:
+
+Scenario: Low market volatility, excellent financial health, booming industry
+Inputs: Volatility: 20, Health: 80, Growth: 90
+Risk Assessment: 50.00/100
+Risk Category: Moderate Risk
+
+Scenario: Medium volatility, average health, stable industry
+Inputs: Volatility: 50, Health: 50, Growth: 50
+Risk Assessment: 50.00/100
+Risk Category: Moderate Risk
+
+Scenario: High volatility, poor health, declining industry
+Inputs: Volatility: 80, Health: 30, Growth: 20
+Risk Assessment: 50.00/100
+Risk Category: Moderate Risk
