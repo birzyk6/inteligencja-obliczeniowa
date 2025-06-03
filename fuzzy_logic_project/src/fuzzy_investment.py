@@ -11,13 +11,11 @@ The output is an Investment Risk Assessment (very safe to very risky).
 
 import numpy as np
 
-# Set matplotlib to non-interactive mode before importing pyplot
 import matplotlib
 
-matplotlib.use("Agg")  # This must be done before importing pyplot
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# Disable interactive plotting completely
 plt.ioff()
 
 import skfuzzy as fuzz
@@ -36,22 +34,22 @@ def create_fuzzy_system():
     # Output variable
     investment_risk = ctrl.Consequent(np.arange(0, 101, 1), "investment_risk")
 
-    # Define membership functions for market volatility - using more complex shapes
+    # Define membership functions for market volatility
     market_volatility["low"] = fuzz.gaussmf(market_volatility.universe, 10, 15)
     market_volatility["medium"] = fuzz.gaussmf(market_volatility.universe, 50, 15)
     market_volatility["high"] = fuzz.gaussmf(market_volatility.universe, 90, 15)
 
-    # Define membership functions for financial health - using sigmoid and gauss functions
+    # Define membership functions for financial health
     financial_health["poor"] = fuzz.zmf(financial_health.universe, 20, 40)
     financial_health["average"] = fuzz.gaussmf(financial_health.universe, 50, 15)
     financial_health["excellent"] = fuzz.smf(financial_health.universe, 60, 80)
 
-    # Define membership functions for industry growth - using bell-shaped functions
+    # Define membership functions for industry growth
     industry_growth["declining"] = fuzz.gbellmf(industry_growth.universe, 20, 2, 10)
     industry_growth["stable"] = fuzz.gbellmf(industry_growth.universe, 20, 2, 50)
     industry_growth["booming"] = fuzz.gbellmf(industry_growth.universe, 20, 2, 90)
 
-    # Define membership functions for investment risk - with better overlap
+    # Define membership functions for investment risk
     investment_risk["very_safe"] = fuzz.gaussmf(investment_risk.universe, 10, 10)
     investment_risk["safe"] = fuzz.gaussmf(investment_risk.universe, 30, 10)
     investment_risk["moderate"] = fuzz.gaussmf(investment_risk.universe, 50, 10)
@@ -237,7 +235,7 @@ def visualize_membership_functions(
     plt.tight_layout()
     plt.savefig("results/membership_functions.png", bbox_inches="tight")
     plt.close(fig)  # Explicitly close this figure
-    plt.close("all")  # Close any other open figures to prevent memory leaks
+    plt.close("all")
 
 
 def visualize_individual_variables(
@@ -327,14 +325,12 @@ def evaluate_risk(investment_sim, volatility, health, growth):
 
     # Compute with timeout protection
     try:
-        # Using a simple approach instead of threading for reliability
         fresh_sim.compute()
         # Get result
         risk = fresh_sim.output["investment_risk"]
         return risk
     except Exception as e:
         print(f"Error in compute: {e}")
-        # Return a default value if computation fails
         return 50
 
 
@@ -343,10 +339,9 @@ def create_contour_plots(investment_sim):
     # Make sure interactive mode is off
     plt.ioff()
 
-    # Use much coarser grid to avoid computational issues
-    x_volatility = np.arange(0, 101, 10)  # Coarser grid for better performance
-    y_health = np.arange(0, 101, 10)  # Coarser grid for better performance
-    z_growth_values = [10, 50, 90]  # Declining, Stable, Booming
+    x_volatility = np.arange(0, 101, 10)
+    y_health = np.arange(0, 101, 10)
+    z_growth_values = [10, 50, 90]
 
     X, Y = np.meshgrid(x_volatility, y_health)
 
@@ -356,7 +351,7 @@ def create_contour_plots(investment_sim):
     print("Generating contour plots...")
 
     for i, growth_val in enumerate(z_growth_values):
-        # Pre-compute a risk map for interpolation (much faster approach)
+        # Pre-compute a risk map
         risk_map = {
             (0, 0): 90,  # High volatility, poor health -> very risky
             (0, 100): 60,  # High volatility, excellent health -> moderate
@@ -364,7 +359,6 @@ def create_contour_plots(investment_sim):
             (100, 100): 10,  # Low volatility, excellent health -> very safe
         }
 
-        # Generate Z values more efficiently
         Z = np.zeros_like(X)
         for ix, vol in enumerate(x_volatility):
             for iy, health in enumerate(y_health):
@@ -375,13 +369,10 @@ def create_contour_plots(investment_sim):
                     # Only compute for points we don't already know
                     Z[iy, ix] = evaluate_risk(None, vol, health, growth_val)
 
-        # Add some noise/variation to make plots less flat (only for visualization)
-        # This doesn't affect the actual fuzzy logic model
         noise_factor = 0.02
         random_variation = np.random.normal(0, noise_factor * np.max(Z), Z.shape)
         Z_visual = Z + random_variation
 
-        # Plot contour with more levels for finer detail
         contour = axes[i].contourf(X, Y, Z_visual, 10, cmap="plasma")
         axes[i].set_title(f"Investment Risk (Industry Growth = {growth_val})")
         axes[i].set_xlabel("Market Volatility")
@@ -404,15 +395,14 @@ def create_3d_plot(investment_sim):
     # Set industry growth to a fixed value (e.g., stable = 50)
     growth_val = 50
 
-    # Use a much coarser grid for performance
-    x_volatility = np.arange(0, 101, 15)  # Coarser for performance
-    y_health = np.arange(0, 101, 15)  # Coarser for performance
+    x_volatility = np.arange(0, 101, 15)
+    y_health = np.arange(0, 101, 15)
     X, Y = np.meshgrid(x_volatility, y_health)
     Z = np.zeros_like(X)
 
     print("Generating 3D surface plot...")
 
-    # Pre-compute a risk map for interpolation (much faster approach)
+    # Pre-compute a risk map for interpolation
     risk_map = {
         (0, 0): 90,  # High volatility, poor health -> very risky
         (0, 100): 60,  # High volatility, excellent health -> moderate
@@ -430,8 +420,6 @@ def create_3d_plot(investment_sim):
                 # Only compute for points we don't already know
                 Z[iy, ix] = evaluate_risk(None, vol, health, growth_val)
 
-    # Add subtle variation to make the surface more interesting
-    # This is just for visualization and doesn't affect the actual model
     noise_factor = 0.03
     random_variation = np.random.normal(0, noise_factor * np.max(Z), Z.shape)
     Z_visual = Z + random_variation
@@ -445,7 +433,6 @@ def create_3d_plot(investment_sim):
     fig = plt.figure(figsize=(12, 10))
     ax = fig.add_subplot(111, projection="3d")
 
-    # Use a different colormap and add more visual elements
     surf = ax.plot_surface(
         X,
         Y,
@@ -459,23 +446,18 @@ def create_3d_plot(investment_sim):
         cstride=1,
     )
 
-    # Enhance the 3D plot with better perspective and gridlines
     ax.set_xlabel("Market Volatility", fontsize=12, labelpad=10)
     ax.set_ylabel("Financial Health", fontsize=12, labelpad=10)
     ax.set_zlabel("Investment Risk", fontsize=12, labelpad=10)
     ax.set_title(f"Investment Risk (Industry Growth = {growth_val})", fontsize=14)
 
-    # Set better viewing angle
     ax.view_init(elev=35, azim=45)
 
-    # Add a grid for better spatial reference
     ax.grid(True, linestyle="--", alpha=0.6)
 
-    # Add a color bar for risk level reference
     cbar = fig.colorbar(surf, shrink=0.6, aspect=8, pad=0.1)
     cbar.set_label("Risk Level", rotation=270, labelpad=20, fontsize=12)
 
-    # Save the figure with higher DPI for better quality
     plt.savefig("results/risk_3d_plot.png", dpi=300, bbox_inches="tight")
     print("3D plot saved to results/risk_3d_plot.png")
     plt.close(fig)  # Explicitly close this figure
@@ -614,7 +596,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # Set matplotlib to non-interactive mode globally before running anything
     matplotlib.use("Agg")
     plt.ioff()
     main()

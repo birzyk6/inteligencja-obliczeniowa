@@ -70,7 +70,7 @@ Pełny zestaw reguł znajduje się w kodzie źródłowym systemu.
 
 ## Metoda defuzyfikacji
 
-W projekcie zastosowano metodę centroidu (środka ciężkości) do defuzyfikacji. Jest to jedna z najbardziej popularnych metod defuzyfikacji, która oblicza wartość wyjściową jako środek ciężkości obszaru pod krzywą funkcji przynależności zmiennej wyjściowej. Metoda ta oferuje kompromis między dokładnością a złożonością obliczeniową.
+W projekcie zastosowano metodę centroidu (środka ciężkości) do defuzyfikacji. Jest to jedna z najbardziej popularnych metod defuzyfikacji, która oblicza wartość wyjściową jako środek ciężkości obszaru pod krzywą funkcji przynależności zmiennej wyjściowej.
 
 ## Przykładowe wnioskowanie
 
@@ -101,7 +101,7 @@ Aby zilustrować działanie systemu, przeprowadzono analizę trzech przykładowy
 
 System generuje następujące wizualizacje:
 
-1. **Funkcje przynależności** - dla wszystkich zmiennych wejściowych i wyjściowej, pokazujące zaawansowane kształty funkcji wykorzystujących modele Gaussa, Z-kształtne, S-kształtne i dzwonowe.
+1. **Funkcje przynależności** - dla wszystkich zmiennych wejściowych i wyjściowej, pokazujące kształty funkcji wykorzystujących modele Gaussa, Z-kształtne, S-kształtne i dzwonowe.
 
 2. **Wykresy konturowe** - pokazujące poziomy ryzyka dla różnych kombinacji zmienności rynku i kondycji finansowej, przy trzech różnych poziomach potencjału wzrostu branży (10 - spadek, 50 - stabilność, 90 - dynamiczny wzrost).
 
@@ -119,6 +119,9 @@ Na powyższym wykresie przedstawiono funkcje przynależności dla zmiennej "Zmie
 -   **Średnia** (kolor pomarańczowy): funkcja Gaussa z centrum w punkcie 50
 -   **Wysoka** (kolor zielony): funkcja Gaussa z centrum w punkcie 90
 
+**Interpretacja:**
+Funkcje Gaussa dla zmienności rynku zapewniają symetryczne i płynne przejścia między kategoriami. Widoczne jest optymalne pokrycie przestrzeni decyzyjnej, z największym nakładaniem się w środkowych obszarach wartości (40-60), gdzie niepewność oceny jest największa. Taki kształt funkcji dobrze modeluje płynne przejścia między poziomami zmienności, co odpowiada rzeczywistemu, nieostro określonemu sposobowi postrzegania zmienności rynkowej.
+
 #### Kondycja finansowa
 
 ![Funkcje przynależności - Kondycja finansowa](./results/financial_health_membership.png)
@@ -129,6 +132,9 @@ Na powyższym wykresie przedstawiono funkcje przynależności dla zmiennej "Kond
 -   **Przeciętna** (kolor pomarańczowy): funkcja Gaussa z centrum w punkcie 50
 -   **Doskonała** (kolor zielony): funkcja S-kształtna z parametrami [60, 80]
 
+**Interpretacja:**
+Na wykresie widoczna jest asymetria funkcji przynależności - łatwiej jest jednoznacznie określić "słabą" kondycję finansową niż precyzyjnie rozróżnić między "przeciętną" i "doskonałą". Funkcje Z-kształtna i S-kształtna modelują asymetryczne zjawiska, gdzie przejście między kategoriami nie jest symetryczne. Taki wybór funkcji lepiej odpowiada rzeczywistości ekonomicznej, gdzie często jednoznaczniej można określić słabą kondycję finansową (np. na podstawie wskaźników zadłużenia i płynności) niż precyzyjnie rozgraniczyć kondycję przeciętną od doskonałej.
+
 #### Potencjał wzrostu branży
 
 ![Funkcje przynależności - Potencjał wzrostu branży](./results/industry_growth_membership.png)
@@ -138,6 +144,9 @@ Na powyższym wykresie przedstawiono funkcje przynależności dla zmiennej "Pote
 -   **Spadek** (kolor niebieski): funkcja dzwonowa z parametrami [20, 2, 10]
 -   **Stabilność** (kolor pomarańczowy): funkcja dzwonowa z parametrami [20, 2, 50]
 -   **Dynamiczny wzrost** (kolor zielony): funkcja dzwonowa z parametrami [20, 2, 90]
+
+**Interpretacja:**
+Funkcje dzwonowe dla potencjału wzrostu branży zapewniają ostre rozgraniczenie między kategoriami, co wskazuje na możliwość bardziej zdecydowanej klasyfikacji w tej zmiennej. Funkcje te oferują węższe zakresy centralnych wartości, co odpowiada bardziej precyzyjnemu określeniu stabilności branży. Wyraźnie widać, że trzy stany (spadek, stabilność, wzrost) są dobrze rozróżnialne, z niewielkim nakładaniem się w obszarach przejściowych, co dobrze modeluje sposób, w jaki eksperci klasyfikują trendy rozwojowe branż.
 
 #### Ryzyko inwestycji
 
@@ -151,6 +160,9 @@ Na powyższym wykresie przedstawiono funkcje przynależności dla zmiennej wyjś
 -   **Ryzykowne** (kolor czerwony): funkcja Gaussa z centrum w punkcie 70
 -   **Bardzo ryzykowne** (kolor fioletowy): funkcja Gaussa z centrum w punkcie 90
 
+**Interpretacja:**
+Dla ryzyka inwestycji równomierne rozłożenie pięciu funkcji Gaussa zapewnia płynne przejście między kategoriami ryzyka. Zastosowanie pięciu kategorii zamiast trzech pozwala na bardziej precyzyjne określenie poziomu ryzyka, co jest szczególnie ważne przy podejmowaniu decyzji inwestycyjnych. Zauważalne jest optymalne nakładanie się funkcji, co pozwala na modelowanie stopniowego przejścia między poszczególnymi poziomami ryzyka i lepiej odpowiada rzeczywistym ocenom ekspertów, którzy rzadko klasyfikują ryzyko w sposób binarny.
+
 ### Zbiorczy wykres funkcji przynależności
 
 Poniżej przedstawiono zbiorcze funkcje przynależności dla wszystkich zmiennych wejściowych i wyjściowej:
@@ -163,6 +175,9 @@ Na powyższym wykresie widoczne są:
 -   Funkcje przynależności dla kondycji finansowej (drugie od góry)
 -   Funkcje przynależności dla potencjału wzrostu branży (trzecie od góry)
 -   Funkcje przynależności dla ryzyka inwestycji (ostatnie na dole)
+
+**Interpretacja:**
+Zbiorczy wykres funkcji przynależności potwierdza dobre dopasowanie funkcji do modelowanych zjawisk, pokazując jak wszystkie zmienne współdziałają w systemie. Widać wyraźnie różnice w kształcie funkcji przynależności dla poszczególnych zmiennych, co odzwierciedla różny charakter modelowanych zjawisk. Kompleksowe podejście do modelowania wszystkich zmiennych zapewnia spójny system wnioskowania rozmytego, gdzie każdy aspekt oceny ryzyka inwestycyjnego jest adekwatnie reprezentowany.
 
 ### Wykresy konturowe
 
@@ -178,6 +193,17 @@ Na wykresach wyraźnie widać, jak zmienia się ryzyko inwestycyjne w zależnoś
 
 Jaśniejsze kolory oznaczają wyższe ryzyko, ciemniejsze - niższe ryzyko inwestycyjne.
 
+**Interpretacja:**
+Wykresy konturowe ujawniają istotne zależności:
+
+-   Przy spadającej branży (pierwszy wykres) nawet dobra kondycja finansowa nie jest w stanie całkowicie zniwelować ryzyka inwestycyjnego przy wysokiej zmienności rynku. Obszar niskiego ryzyka jest najmniejszy i ogranicza się do lewego górnego rogu (niska zmienność, doskonała kondycja).
+
+-   W przypadku stabilnej branży (środkowy wykres) istnieje wyraźna "bezpieczna strefa" w lewym górnym rogu (niska zmienność, dobra kondycja), gdzie ryzyko jest minimalne. Widoczna jest także większa tolerancja na zmienność rynku przy dobrej kondycji finansowej.
+
+-   Dla rozwijającej się branży (ostatni wykres) bezpieczna strefa jest znacznie większa, co potwierdza pozytywny wpływ potencjału wzrostu na ocenę ryzyka. Nawet przy średniej zmienności rynku i dobrej kondycji finansowej ryzyko pozostaje na akceptowalnym poziomie.
+
+Zestawienie trzech wykresów pokazuje, jak silny wpływ ma potencjał rozwojowy branży na ostateczną ocenę ryzyka, szczególnie w połączeniu z innymi czynnikami.
+
 ### Wykres powierzchniowy 3D
 
 Poniżej przedstawiono wykres powierzchniowy 3D pokazujący zależność między zmiennością rynku, kondycją finansową a ryzykiem inwestycyjnym przy stałym poziomie potencjału wzrostu branży równym 50 (stabilność):
@@ -186,56 +212,29 @@ Poniżej przedstawiono wykres powierzchniowy 3D pokazujący zależność między
 
 Wykres ten pozwala na przestrzenną wizualizację wpływu zmienności rynku i kondycji finansowej na ryzyko inwestycyjne. Wysokość powierzchni odpowiada poziomowi ryzyka - im wyżej, tym wyższe ryzyko inwestycyjne.
 
+**Interpretacja:**
+Na wykresie powierzchniowym 3D można zauważyć:
+
+-   Wyraźne "doliny" niskiego ryzyka w obszarze niskiej zmienności i dobrej kondycji finansowej, co potwierdza, że kombinacja tych czynników prowadzi do najbezpieczniejszych inwestycji.
+
+-   Strome "zbocza" wskazujące na szybki wzrost ryzyka przy pogorszeniu się któregokolwiek z parametrów, co sugeruje wysoką wrażliwość oceny ryzyka na te czynniki.
+
+-   Stosunkowo płaskie "płaskowyże" wysokiego ryzyka przy złej kondycji finansowej i wysokiej zmienności rynku, co wskazuje na to, że po przekroczeniu pewnych progów dalsza degradacja parametrów nie powoduje już znaczącego wzrostu ryzyka (które jest już i tak bardzo wysokie).
+
+Trójwymiarowa wizualizacja podkreśla nieliniowy charakter zależności między parametrami a oceną ryzyka, co jest trudne do uchwycenia w tradycyjnych, liniowych modelach oceny ryzyka.
+
 ## Wnioski
 
-1. **Skuteczność zaawansowanych funkcji przynależności** - Zastosowanie funkcji Gaussa, Z-kształtnych, S-kształtnych i dzwonowych pozwala na bardziej dokładne modelowanie niepewności niż funkcje trójkątne. Jak widać na indywidualnych wykresach zmiennych, funkcje te zapewniają płynne przejścia między kategoriami lingwistycznymi, co lepiej oddaje charakter rzeczywistych ocen eksperckich.
+1. **Skuteczność funkcji przynależności** - Zastosowanie funkcji Gaussa, Z-kształtnych, S-kształtnych i dzwonowych pozwala na bardziej dokładne modelowanie niepewności niż funkcje trójkątne. Jak widać na indywidualnych wykresach zmiennych, funkcje te zapewniają płynne przejścia między kategoriami lingwistycznymi, co lepiej oddaje charakter rzeczywistych ocen eksperckich.
 
-2. **Precyzyjne wartości liczbowe** - System generuje precyzyjne oceny liczbowe (np. 16.67/100, 49.72/100, 87.57/100), które można łatwo interpretować jako stopień przynależności do danej kategorii ryzyka, dając bardziej zniuansowane wyniki niż systemy binarne.
+2. **Znaczenie kondycji finansowej** - Analiza wyników pokazuje, że kondycja finansowa przedsiębiorstwa ma kluczowe znaczenie dla oceny ryzyka inwestycji. Przejście od słabej (30) do doskonałej (80) kondycji finansowej może zmienić ocenę ryzyka z "bardzo ryzykownej" na "bardzo bezpieczną", nawet przy innych niezmienionych parametrach. Widać to wyraźnie zarówno na wykresach konturowych, jak i na wykresie 3D, gdzie gradient zmian jest szczególnie stromy wzdłuż osi kondycji finansowej.
 
-3. **Znaczenie kondycji finansowej** - Analiza wyników pokazuje, że kondycja finansowa przedsiębiorstwa ma kluczowe znaczenie dla oceny ryzyka inwestycji. Przejście od słabej (30) do doskonałej (80) kondycji finansowej może zmienić ocenę ryzyka z "bardzo ryzykownej" na "bardzo bezpieczną", nawet przy innych niezmienionych parametrach. Widać to wyraźnie zarówno na wykresach konturowych, jak i na wykresie 3D, gdzie gradient zmian jest szczególnie stromy wzdłuż osi kondycji finansowej.
+3. **Wpływ zmienności rynku** - Wysoka zmienność rynku (80) wyraźnie zwiększa ryzyko inwestycji, nawet przy dobrych pozostałych parametrach. Kształt funkcji przynależności dla zmienności rynku (widoczny na indywidualnym wykresie) pokazuje, jak płynnie zmienia się ocena zmienności od niskiej do wysokiej, co przekłada się na odpowiednią gradację ryzyka.
 
-4. **Wpływ zmienności rynku** - Wysoka zmienność rynku (80) wyraźnie zwiększa ryzyko inwestycji, nawet przy dobrych pozostałych parametrach. Kształt funkcji przynależności dla zmienności rynku (widoczny na indywidualnym wykresie) pokazuje, jak płynnie zmienia się ocena zmienności od niskiej do wysokiej, co przekłada się na odpowiednią gradację ryzyka.
+4. **Interakcje między zmiennymi** - System ujawnia złożone, nieliniowe interakcje między trzema zmiennymi wejściowymi, co widoczne jest szczególnie na wykresach konturowych i powierzchniowym. Dzięki indywidualnym wykresom funkcji przynależności można lepiej zrozumieć sposób modelowania każdej ze zmiennych i ich wzajemne oddziaływanie.
 
-5. **Interakcje między zmiennymi** - System ujawnia złożone, nieliniowe interakcje między trzema zmiennymi wejściowymi, co widoczne jest szczególnie na wykresach konturowych i powierzchniowym. Dzięki indywidualnym wykresom funkcji przynależności można lepiej zrozumieć sposób modelowania każdej ze zmiennych i ich wzajemne oddziaływanie.
-
-6. **Charakterystyka funkcji przynależności** - Porównując wykresy poszczególnych zmiennych, można zauważyć:
-
-    - Funkcje Gaussa dla zmienności rynku zapewniają symetryczne i płynne przejścia między kategoriami
-    - Funkcje Z-kształtna i S-kształtna dla kondycji finansowej modelują asymetryczne zjawiska, gdzie przejście między kategoriami nie jest symetryczne
-    - Funkcje dzwonowe dla potencjału wzrostu branży oferują węższe zakresy centralnych wartości, co odpowiada bardziej precyzyjnemu określeniu stabilności branży
-
-7. **Elastyczność systemu** - Implementacja w języku Python z wykorzystaniem biblioteki scikit-fuzzy umożliwia łatwą modyfikację i rozszerzanie systemu o dodatkowe zmienne, funkcje przynależności czy reguły wnioskowania. Indywidualne wykresy zmiennych ułatwiają precyzyjne dostrojenie kształtu funkcji przynależności.
-
-8. **Potencjalne kierunki rozwoju** - System mógłby zostać rozbudowany o:
+5. **Potencjalne kierunki rozwoju** - System mógłby zostać rozbudowany o:
     - Dodatkowe zmienne wejściowe (np. wskaźniki makroekonomiczne, ryzyko polityczne)
     - Dynamiczną aktualizację reguł na podstawie danych historycznych
     - Interfejs użytkownika umożliwiający interaktywną analizę scenariuszy
     - Integrację z systemami pozyskiwania danych rynkowych w czasie rzeczywistym
-
-System oparty na logice rozmytej z wykorzystaniem zaawansowanych funkcji przynależności stanowi wartościowe narzędzie wspomagające podejmowanie decyzji inwestycyjnych. Jak pokazują szczegółowe wykresy poszczególnych zmiennych, takie podejście pozwala na precyzyjne modelowanie niepewności w sposób przypominający ludzkie rozumowanie oraz generowanie intuicyjnych i łatwych do interpretacji wyników liczbowych, które uwzględniają niejednoznaczność i subiektywny charakter ocen eksperckich.
-
-## Interpretacja wykresów
-
-Analiza wygenerowanych wykresów pozwala na wyciągnięcie następujących wniosków:
-
-1. **Z indywidualnych wykresów funkcji przynależności** widać, że:
-
-    - Dla zmienności rynku funkcje Gaussa mają optymalne pokrycie przestrzeni decyzyjnej, z największym nakładaniem się w środkowych obszarach wartości (40-60), gdzie niepewność oceny jest największa
-    - Dla kondycji finansowej wyraźna jest asymetria funkcji - łatwiej jest jednoznacznie określić "słabą" kondycję finansową niż precyzyjnie rozróżnić między "przeciętną" i "doskonałą"
-    - Dla potencjału wzrostu branży funkcje dzwonowe zapewniają ostre rozgraniczenie między kategoriami, co wskazuje na możliwość bardziej zdecydowanej klasyfikacji w tej zmiennej
-    - Dla ryzyka inwestycji równomierne rozłożenie pięciu funkcji Gaussa zapewnia płynne przejście między kategoriami ryzyka
-
-2. **Zbiorczy wykres funkcji przynależności** potwierdza dobre dopasowanie funkcji do modelowanych zjawisk, pokazując jak wszystkie zmienne współdziałają w systemie.
-
-3. **Wykresy konturowe** ujawniają, że:
-
-    - Przy spadającej branży (pierwszy wykres) nawet dobra kondycja finansowa nie jest w stanie całkowicie zniwelować ryzyka inwestycyjnego przy wysokiej zmienności rynku
-    - W przypadku stabilnej branży (środkowy wykres) istnieje wyraźna "bezpieczna strefa" w lewym górnym rogu (niska zmienność, dobra kondycja)
-    - Dla rozwijającej się branży (ostatni wykres) bezpieczna strefa jest znacznie większa, co potwierdza pozytywny wpływ potencjału wzrostu na ocenę ryzyka
-
-4. **Wykres powierzchniowy 3D** pozwala zauważyć:
-    - Wyraźne "doliny" niskiego ryzyka w obszarze niskiej zmienności i dobrej kondycji finansowej
-    - Strome "zbocza" wskazujące na szybki wzrost ryzyka przy pogorszeniu się któregokolwiek z parametrów
-    - Stosunkowo płaskie "płaskowyże" wysokiego ryzyka przy złej kondycji finansowej i wysokiej zmienności rynku
-
-Dodane indywidualne wykresy funkcji przynależności dla poszczególnych zmiennych znacząco ułatwiają zrozumienie i interpretację modelu rozmytego. Pozwalają lepiej prześledzić proces wnioskowania od danych wejściowych, poprzez funkcje przynależności, do końcowej oceny ryzyka inwestycyjnego.

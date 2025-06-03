@@ -96,6 +96,10 @@ The project generates:
 -   3D surface plot (`risk_3d_plot.png`)
 -   Text file with example results (`example_results.txt`)
 
+## Author
+
+Bartosz Irzyk
+
 ## License
 
 MIT
