@@ -191,7 +191,7 @@ graph TD
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/neural_networks_project.git
+git clone git@github.com:birzyk6/inteligencja-obliczeniowa.git
 cd neural_networks_project
 ```
 
