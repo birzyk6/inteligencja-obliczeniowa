@@ -122,7 +122,7 @@ _Rysunek 8: Końcowe prawdopodobieństwa dla wszystkich 10 klas._
 **Kompletne nagranie funkcjonalności aplikacji:**
 
 <video controls>
-  <source src="./plots/app_showcase.mp4" type="video/mp4">
+  <source src="https://www.youtube.com/watch?v=ucLcYAWXpMU" type="video/mp4">
 </video>
 
 _Wideo pokazuje pełny proces: rysowanie cyfry na płótnie, predykcję w czasie rzeczywistym, wizualizację aktywacji warstw sieci neuronowej oraz interfejs z ciemnym motywem._
