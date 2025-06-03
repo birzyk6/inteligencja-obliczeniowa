@@ -174,7 +174,7 @@ graph TD
 | :---------------------: | :--------: |
 |  **Training Accuracy**  |   99.39%   |
 | **Validation Accuracy** | **99.61%** |
-|  **Total Parameters**   |   ~2.3M    |
+|  **Total Parameters**   |   ~3.6M    |
 |   **Training Epochs**   |     18     |
 | **Final Learning Rate** |  0.000125  |
 
