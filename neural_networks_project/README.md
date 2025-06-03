@@ -17,6 +17,20 @@ _An interactive full-stack application that demonstrates how Convolutional Neura
 
 ## 🎯 Demo & Screenshots
 
+### 🎬 Live Application Demo
+
+<div align="center">
+
+**Watch the Neural Network in Action**
+
+<video controls>
+  <source src="./plots/app_showcase.mp4" type="video/mp4">
+</video>
+
+_Complete application walkthrough showing real-time digit recognition, neural network visualization, and interactive features_
+
+</div>
+
 ### 🖥️ Main Application Interface
 
 <div align="center">

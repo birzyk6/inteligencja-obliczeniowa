@@ -117,6 +117,16 @@ _Rysunek 8: Końcowe prawdopodobieństwa dla wszystkich 10 klas._
 
 ## Interfejs Użytkownika
 
+### Demonstracja Aplikacji w Działaniu
+
+**Kompletne nagranie funkcjonalności aplikacji:**
+
+<video controls>
+  <source src="./plots/app_showcase.mp4" type="video/mp4">
+</video>
+
+_Wideo pokazuje pełny proces: rysowanie cyfry na płótnie, predykcję w czasie rzeczywistym, wizualizację aktywacji warstw sieci neuronowej oraz interfejs z ciemnym motywem._
+
 ### Interfejs Aplikacji
 
 ![Interfejs aplikacji](plots/9_app_screen.png)
